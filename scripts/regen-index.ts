@@ -11,9 +11,9 @@ const REPO_ROOT = join(__dirname, '..');
 const THEMES_DIR = join(REPO_ROOT, 'themes');
 const INDEX_PATH = join(REPO_ROOT, 'index.json');
 const RAW_BASE = process.env.RAW_BASE
-  ?? 'https://raw.githubusercontent.com/zenbu/zenbu-themes/main';
+  ?? 'https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main';
 const API_BASE = process.env.API_BASE
-  ?? 'https://api.github.com/repos/zenbu/zenbu-themes';
+  ?? 'https://api.github.com/repos/zenbuapps/zenbu-themes';
 
 interface IndexEntry {
   id: string;

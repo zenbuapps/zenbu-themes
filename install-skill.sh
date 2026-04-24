@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Install the zenbu-theme-author Claude Code skill to ~/.claude/skills/
 # Usage:
-#   curl -o- https://raw.githubusercontent.com/zenbu/zenbu-themes/main/install-skill.sh | bash
+#   curl -o- https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/install-skill.sh | bash
 
 set -e
 
 SKILL_DIR="${HOME}/.claude/skills/zenbu-theme-author"
-SOURCE_URL="https://raw.githubusercontent.com/zenbu/zenbu-themes/main/skill/SKILL.md"
+SOURCE_URL="https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/skill/SKILL.md"
 
 mkdir -p "${SKILL_DIR}"
 echo "→ Installing zenbu-theme-author skill to ${SKILL_DIR}/SKILL.md"

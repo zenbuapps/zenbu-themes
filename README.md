@@ -18,7 +18,7 @@ Don't edit this repo by hand — use the `zenbu-theme-author` skill in Claude Co
 Install the skill:
 
 ```bash
-curl -o- https://raw.githubusercontent.com/zenbu/zenbu-themes/main/install-skill.sh | bash
+curl -o- https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/install-skill.sh | bash
 ```
 
 Then in Claude Code:
