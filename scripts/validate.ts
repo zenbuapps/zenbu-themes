@@ -79,7 +79,11 @@ async function validateTheme(themeId: string): Promise<Problem[]> {
       for (const rule of rules) {
         const sel = rule.replace(/\{$/, '').trim();
         if (!sel || sel.startsWith('@')) continue;
-        if (/^\d+%$|^from$|^to$/.test(sel)) continue;
+        // Allow keyframe stops: "from", "to", "50%", or comma-separated like "0%, 100%".
+        const isKeyframeStop = sel
+          .split(',')
+          .every((part) => /^(\d+(?:\.\d+)?%|from|to)$/.test(part.trim()));
+        if (isKeyframeStop) continue;
         if (!sel.includes(`.${rootClass}`)) {
           unscoped += 1;
           if (samples.length < 3) samples.push(sel.slice(0, 60));
