@@ -1,0 +1,68 @@
+{
+  "slug": "home",
+  "title": "首頁",
+  "blocks": [
+    { "id": "hero-1", "type": "hero-carousel",
+      "slides": [
+        { "imageUrl": "/themes/plumlight/hero-fruit.jpg", "action": "/#best" },
+        { "imageUrl": "/themes/plumlight/gift-box.jpg",   "action": "/#gift" },
+        { "imageUrl": "/themes/plumlight/plum-hand.jpg",  "action": "/about" }
+      ],
+      "autoplayMs": 5500
+    },
+    { "id": "about-1", "type": "about-summary", "imageUrl": "/themes/plumlight/plum-hand.jpg" },
+    { "id": "cats-1", "type": "categories-circles",
+      "items": [
+        { "imageUrl": "/themes/plumlight/product.jpg",    "href": "/zb-cart/collections/plum" },
+        { "imageUrl": "/themes/plumlight/hero-fruit.jpg", "href": "/zb-cart/collections/fruit" },
+        { "imageUrl": "/themes/plumlight/gift-box.jpg",   "href": "/zb-cart/collections/salty" }
+      ]
+    },
+    { "id": "best-1", "type": "product-showcase",
+      "anchorId": "best",
+      "source": { "mode": "auto", "limit": 4 }
+    },
+    { "id": "monthly-1", "type": "product-showcase",
+      "anchorId": "monthly",
+      "source": { "mode": "auto", "limit": 4 }
+    },
+    { "id": "gift-1", "type": "gift-cta",
+      "imageUrl": "/themes/plumlight/gift-box.jpg",
+      "href": "/zb-cart/collections/gift"
+    }
+  ],
+  "translations": {
+    "zh-TW": {
+      "seoTitle": "梅妙蒔光 Plumlight Crafted",
+      "seoDescription": "自然無添加，手工日曬蜜餞。台灣南投、信義青梅與紅肉李，古法醃製的時光滋味。",
+      "blocksContent": {
+        "hero-1": {
+          "slide0_title": "自然選物，安心美味\n陪你感受生活的美好",
+          "slide0_cta": "商品專區",
+          "slide1_title": "節慶送禮\n送出不只體面的心意",
+          "slide1_cta": "禮盒訂製",
+          "slide2_title": "手工蜜餞技藝\n傳承數十年的風味",
+          "slide2_cta": "品牌故事"
+        },
+        "about-1": {
+          "section_title": "用時光的溫度，\n釀成每一顆入口的風味",
+          "body": "梅妙蒔光延續台灣蜜餞工藝的溫厚記憶，從選果、醃製、風乾到窖藏，每一道工序皆親手把關。我們相信食物的味道與時間同行——自然無添加、只以糖、鹽、梅，釀出屬於島嶼四季的清甜與鹹香。"
+        },
+        "cats-1": {
+          "section_title_cn": "商品專區",
+          "section_title_en": "Shop Our Products",
+          "item0_label": "蜜餞",
+          "item1_label": "果乾",
+          "item2_label": "鹹酸甜"
+        },
+        "best-1": { "title_cn": "本月熱銷", "title_en": "Best Sellers" },
+        "monthly-1": { "title_cn": "本月選品", "title_en": "Monthly Picks" },
+        "gift-1": {
+          "title": "節慶禮盒訂製",
+          "body": "每一份禮，都是時間凝結而成的問候。\n選自十二款招牌蜜餞、精緻禮盒包裝，\n讓心意隨著季節，送到每個重要的人手中。",
+          "cta_label": "查看禮盒系列"
+        }
+      }
+    }
+  }
+}

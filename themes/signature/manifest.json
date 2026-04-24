@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "signature",
+  "name": "科技風格 Signature",
+  "description": "深色主調 + 橘紅 accent + Space Grotesk 字體。帶粒子網絡 hero、磁吸按鈕、滾動進場、計數器、客戶 logo 橫向捲動。適合 SaaS / 科技品牌。",
+  "author": { "name": "Zenbu" },
+  "license": "MIT",
+  "compatibility": { "zenbuSite": ">=0.5.0" },
+  "coverImage": "./cover.png",
+  "tags": ["saas", "tech", "dark", "chinese"],
+  "rootClassName": "signature-root",
+  "cssVars": [
+    {
+      "key": "--accent",
+      "label": "強調色（主色）",
+      "type": "color-hex",
+      "default": "#FF5E2B",
+      "pairedWith": "--accent-glow",
+      "affects": ["CTA 按鈕", "Hero 粒子光暈", "主標題第二行漸層", "特色打勾圖示", "連結底線"],
+      "hint": "跟 --accent-glow 必須同時改；--accent 填 hex，--accent-glow 填 \"R, G, B\" 三元組。"
+    },
+    {
+      "key": "--accent-glow",
+      "label": "強調色（RGB 三元組，給光暈用）",
+      "type": "color-rgb-triplet",
+      "default": "255, 94, 43",
+      "pairedWith": "--accent",
+      "affects": ["Hero 粒子周圍光暈", "按鈕 hover shadow", "滑鼠靠近時的粒子亮度"],
+      "hint": "格式：空白加逗號分隔三個 0–255 整數，例如 \"59, 130, 246\"（對應 #3B82F6）。"
+    },
+    { "key": "--bg", "label": "整頁背景", "type": "color-hex", "default": "#0a0a0b", "affects": ["整頁底色"] },
+    { "key": "--bg-soft", "label": "區塊柔底", "type": "color-hex", "default": "#111113", "affects": ["pricing/why 等區塊的柔和底"] },
+    { "key": "--bg-elev", "label": "浮起層背景", "type": "color-hex", "default": "#17171a", "affects": ["card / modal 的浮起層"] },
+    { "key": "--fg", "label": "主文字色", "type": "color-hex", "default": "#f5f5f7", "affects": ["主要文字"] },
+    { "key": "--fg-dim", "label": "次要文字色", "type": "color-hex", "default": "#a1a1aa", "affects": ["副標題、敘述文字"] },
+    { "key": "--fg-mute", "label": "最淡文字色", "type": "color-hex", "default": "#6b6b74", "affects": ["小提示、meta 資訊"] },
+    {
+      "key": "--anim-intensity",
+      "label": "動畫強度",
+      "type": "number",
+      "default": "1",
+      "affects": ["Hero 粒子亮度", "光暈強度"],
+      "hint": "建議 0–1.5。0 = 幾乎靜止、1 = 預設、1.5 = 強化。"
+    },
+    { "key": "--radius", "label": "圓角預設", "type": "length", "default": "14px", "affects": ["卡片、按鈕圓角"] },
+    { "key": "--font-display", "label": "標題字體", "type": "string", "default": "\"Space Grotesk\", \"Noto Sans TC\", system-ui, sans-serif", "affects": ["主標題"] },
+    { "key": "--font-sans", "label": "內文字體", "type": "string", "default": "\"Inter\", \"Noto Sans TC\", system-ui, sans-serif", "affects": ["一般內文"] }
+  ],
+  "semantics": {
+    "accent": ["--accent", "--accent-glow"],
+    "primary": ["--accent", "--accent-glow"],
+    "background": "--bg",
+    "foreground": "--fg"
+  },
+  "blockTypesUsed": ["hero", "stats", "products", "integration-flow", "why", "testimonials", "pricing"],
+  "samplePages": [
+    { "slug": "home", "path": "./sample-pages/home.json" },
+    { "slug": "about", "path": "./sample-pages/about.json" },
+    { "slug": "contact", "path": "./sample-pages/contact.json" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "home",
+  "title": "首頁（科技風格）",
+  "blocks": [
+    { "id": "sig-home-hero",     "type": "hero" },
+    { "id": "sig-home-stats",    "type": "stats" },
+    { "id": "sig-home-products", "type": "products" },
+    { "id": "sig-home-flow",     "type": "integration-flow" },
+    { "id": "sig-home-why",      "type": "why" },
+    { "id": "sig-home-reviews",  "type": "testimonials" },
+    { "id": "sig-home-pricing",  "type": "pricing" }
+  ]
+}

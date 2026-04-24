@@ -1,0 +1,21 @@
+{
+  "slug": "contact",
+  "title": "聯絡我們",
+  "blocks": [
+    { "id": "contact-info-1", "type": "contact-info" },
+    { "id": "contact-form-1", "type": "contact-form" }
+  ],
+  "translations": {
+    "zh-TW": {
+      "seoTitle": "聯絡我們 · 梅妙蒔光",
+      "seoDescription": "任何訂購、批發或客製禮盒需求，歡迎留下訊息或來電，我們將盡快回覆。",
+      "blocksContent": {
+        "contact-info-1": { "section_title": "聯絡資訊" },
+        "contact-form-1": {
+          "section_title": "與我們聯繫",
+          "description": "有任何問題、訂購或客製需求，歡迎與我們聯繫。"
+        }
+      }
+    }
+  }
+}

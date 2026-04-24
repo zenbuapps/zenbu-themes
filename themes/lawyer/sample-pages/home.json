@@ -1,0 +1,11 @@
+{
+  "slug": "home",
+  "title": "首頁（靜奢律師）",
+  "blocks": [
+    { "id": "lw-home-hero",        "type": "hero" },
+    { "id": "lw-home-practice",    "type": "practice" },
+    { "id": "lw-home-cases",       "type": "cases" },
+    { "id": "lw-home-portrait",    "type": "portrait" },
+    { "id": "lw-home-appointment", "type": "appointment" }
+  ]
+}

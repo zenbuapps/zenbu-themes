@@ -1,0 +1,8 @@
+{
+  "slug": "contact",
+  "title": "聯絡我們（科技風格）",
+  "blocks": [
+    { "id": "sig-contact-hero",  "type": "hero" },
+    { "id": "sig-contact-stats", "type": "stats" }
+  ]
+}

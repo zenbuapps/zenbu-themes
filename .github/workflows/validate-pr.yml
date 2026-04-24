@@ -1,0 +1,38 @@
+name: Validate Theme PR
+
+on:
+  pull_request:
+    paths:
+      - 'themes/**'
+      - 'schema/**'
+      - 'scripts/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Schema + CSS scope validation
+        run: npm run validate
+
+      # Playwright preview screenshot (attached to PR comment)
+      - name: Install Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Render sample pages + capture screenshots
+        # script not yet implemented; placeholder for future preview harness
+        run: echo "TODO: render each theme sample-pages/home.json via preview harness + upload artifact"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: theme-previews
+          path: preview-out/

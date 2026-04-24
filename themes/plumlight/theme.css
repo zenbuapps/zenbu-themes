@@ -1,0 +1,1051 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* =========================================================
+   梅妙蒔光 Plumlight Crafted — Design Tokens
+   ========================================================= */
+.plumlight-root{
+  /* Brand colors from Figma metadata */
+  --plum-gold:      #a26e33;  /* primary brand gold-brown (#a26e33) */
+  --plum-gold-2:    #d5a361;  /* light accent */
+  --plum-gold-3:    #b18950;  /* button fill */
+  --plum-gold-dark: #b48445;  /* ribbon/band */
+  --plum-red:       #b3292c;  /* accent red */
+  --plum-cream:     #f2eadd;  /* decorative cream flowers */
+  --plum-cream-2:   #e7d8c1;  /* footer bg */
+  --plum-cream-3:   #e8e0d0;  /* wave trim */
+  --plum-ink:       #211815;  /* body text */
+  --plum-ink-2:     #080808;  /* banner overlay */
+  --plum-muted:     #726a67;  /* secondary text */
+  --plum-line:      #a08a83;  /* borders */
+  --plum-paper:     #fbf7f0;  /* page background */
+  --plum-white:     #ffffff;
+
+  /* Fonts */
+  --plum-f-serif: "Noto Serif TC", "PT Serif", "Georgia", serif;
+  --plum-f-english: "PT Serif", "Georgia", serif;
+  --plum-f-sans:  "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
+
+  /* Effects */
+  --plum-shadow-soft: 0 10px 30px rgba(33,24,21,0.10);
+  --plum-shadow-card: 0 6px 20px rgba(33,24,21,0.08);
+
+  background: var(--plum-paper);
+  color: var(--plum-ink);
+  font-family: var(--plum-f-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.plumlight-root *{ box-sizing: border-box; margin: 0; padding: 0; }
+.plumlight-root img{ display:block; max-width:100%; }
+.plumlight-root a{ color: inherit; text-decoration: none; }
+.plumlight-root button{ font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+/* Paper / parchment backdrop — subtle warm noise */
+.plumlight-root::before{
+  content:"";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background-image: url('/themes/plumlight/paper-texture.jpg');
+  background-size: 1200px;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
+/* =========================================================
+   SHARED UTILITIES
+   ========================================================= */
+.plumlight-root .container{ max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
+.plumlight-root .stack-center{ display:flex; flex-direction:column; align-items:center; }
+
+/* Section headers 『中文 + English』with little ornament */
+.plumlight-root .section-title{
+  display:flex; flex-direction:column; align-items:center; gap: 8px;
+  margin-bottom: 56px;
+  position: relative;
+}
+.plumlight-root .section-title .ornament{
+  width: 52px; height: 30px; margin-bottom: 14px;
+  color: var(--plum-gold);
+}
+.plumlight-root .section-title .cn{
+  font-family: var(--plum-f-serif);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+}
+.plumlight-root .section-title .en{
+  font-family: var(--plum-f-english);
+  font-size: 36px;
+  line-height: 1.25;
+  color: var(--plum-ink);
+  letter-spacing: 0.01em;
+}
+
+/* Pill buttons */
+.plumlight-root .btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 40px;
+  border-radius: 999px;
+  font-family: var(--plum-f-sans);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform .35s cubic-bezier(.2,.7,.1,1), background .25s ease, color .25s ease, box-shadow .25s ease;
+  will-change: transform;
+}
+.plumlight-root .btn-primary{
+  background: var(--plum-gold-3);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(177,137,80,0.35);
+}
+.plumlight-root .btn-primary:hover{ transform: translateY(-2px); background: #9c7541; box-shadow: 0 10px 28px rgba(177,137,80,0.4); }
+
+.plumlight-root .btn-outline{
+  background: transparent;
+  color: var(--plum-gold-3);
+  border: 2px solid var(--plum-gold-3);
+}
+.plumlight-root .btn-outline:hover{ background: var(--plum-gold-3); color: #fff; transform: translateY(-2px); }
+
+.plumlight-root .btn-ghost-white{
+  background: #fff;
+  color: var(--plum-gold-3);
+  border: 2px solid var(--plum-gold-3);
+}
+.plumlight-root .btn-ghost-white:hover{ background: var(--plum-gold-3); color: #fff; }
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.plumlight-root .nav{
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 16px 40px;
+  display: grid; grid-template-columns: auto 1fr auto; gap: 40px; align-items: center;
+  background: transparent;
+  transition: background .3s ease, backdrop-filter .3s ease, box-shadow .3s ease, padding .3s ease;
+}
+.plumlight-root .nav.scrolled{
+  background: rgba(251,247,240,.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(33,24,21,.08);
+  padding: 10px 40px;
+}
+.plumlight-root .nav .logo{ display:flex; align-items:center; gap: 10px; cursor:pointer; }
+.plumlight-root .nav .logo svg{ height: 56px; width: auto; }
+.plumlight-root .nav .logo-text{
+  display:flex; flex-direction:column; line-height: 1;
+}
+.plumlight-root .nav .logo-text .cn{
+  font-family: var(--plum-f-serif);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.24em;
+  color: var(--plum-ink);
+}
+.plumlight-root .nav .logo-text .en{
+  font-family: var(--plum-f-english);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--plum-gold);
+  margin-top: 4px;
+}
+
+.plumlight-root .nav .links{
+  display: flex; gap: 48px; justify-content: center;
+}
+.plumlight-root .nav .links a{
+  font-family: var(--plum-f-serif);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+.plumlight-root .nav .links a::after{
+  content:"";
+  position: absolute; left: 0; right: 0; bottom: -4px;
+  height: 2px; background: var(--plum-gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .35s cubic-bezier(.2,.7,.1,1);
+}
+.plumlight-root .nav .links a:hover{ color: var(--plum-gold); }
+.plumlight-root .nav .links a:hover::after,
+.plumlight-root .nav .links a.active::after{ transform: scaleX(1); }
+.plumlight-root .nav .links a.active{ color: var(--plum-gold); }
+
+.plumlight-root .nav .right{ display:flex; align-items:center; gap: 16px; }
+.plumlight-root .nav .member{
+  font-family: var(--plum-f-serif);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+  transition: color .25s ease;
+}
+.plumlight-root .nav .member:hover{ color: var(--plum-gold); }
+.plumlight-root .nav .cart-btn{
+  position: relative;
+  width: 40px; height: 40px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius: 50%;
+  transition: background .25s ease;
+}
+.plumlight-root .nav .cart-btn:hover{ background: rgba(162,110,51,0.1); }
+.plumlight-root .nav .cart-btn svg{ width: 24px; height: 24px; color: var(--plum-ink); }
+.plumlight-root .nav .cart-count{
+  position: absolute; top: -2px; right: -2px;
+  min-width: 18px; height: 18px;
+  background: var(--plum-red);
+  color: #fff;
+  border-radius: 999px;
+  font-family: var(--plum-f-sans);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 5px;
+  box-shadow: 0 2px 6px rgba(179,41,44,.4);
+  animation: plumlight-pop .3s cubic-bezier(.2,1.3,.4,1);
+}
+@keyframes plumlight-pop{ from{ transform: scale(0);} to{ transform: scale(1);} }
+
+.plumlight-root .hamburger{ display: none; width: 36px; height: 36px; align-items:center; justify-content:center; }
+.plumlight-root .hamburger svg{ width: 24px; height: 24px; }
+
+/* =========================================================
+   PLUM DECOR (cream plum-blossom silhouettes)
+   ========================================================= */
+.plumlight-root .plum-decor{
+  position: absolute;
+  color: var(--plum-cream);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================================================
+   WAVE BAND  (青海波 horizontal band)
+   ========================================================= */
+.plumlight-root .wave-band{
+  width: 100%;
+  height: 120px;
+  background: var(--plum-gold-dark);
+  position: relative;
+  overflow: hidden;
+}
+.plumlight-root .wave-band::before{
+  content:"";
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 30px 60px, transparent 28px, rgba(255,255,255,.09) 28px 30px, transparent 30px),
+    radial-gradient(circle at 90px 60px, transparent 28px, rgba(255,255,255,.09) 28px 30px, transparent 30px),
+    radial-gradient(circle at 60px 30px, transparent 28px, rgba(255,255,255,.12) 28px 30px, transparent 30px),
+    radial-gradient(circle at 0px 30px, transparent 28px, rgba(255,255,255,.12) 28px 30px, transparent 30px),
+    radial-gradient(circle at 120px 30px, transparent 28px, rgba(255,255,255,.12) 28px 30px, transparent 30px);
+  background-size: 120px 120px;
+  opacity: .8;
+}
+.plumlight-root .wave-band.band-light{ background: var(--plum-gold-dark); }
+
+/* Seigaiha wave scallop trim */
+.plumlight-root .scallop-trim{
+  width: 100%; height: 60px;
+  background: var(--plum-cream-2);
+  position: relative;
+}
+.plumlight-root .scallop-trim.up{
+  mask-image: radial-gradient(circle at 30px 60px, transparent 30px, #000 30px);
+  -webkit-mask-image: radial-gradient(circle at 30px 60px, transparent 30px, #000 30px);
+  mask-size: 60px 60px;
+  -webkit-mask-size: 60px 60px;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.plumlight-root .hero{
+  position: relative;
+  width: 100%;
+  height: 760px;
+  overflow: hidden;
+  background: #000;
+}
+.plumlight-root .hero-slides{
+  position: absolute; inset: 0;
+  display: flex;
+  transition: transform 1s cubic-bezier(.7,.0,.2,1);
+}
+.plumlight-root .hero-slide{
+  flex: 0 0 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.plumlight-root .hero-slide::after{
+  content:"";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,8,.65) 0%, rgba(8,8,8,0) 60%);
+}
+.plumlight-root .hero-content{
+  position: absolute;
+  left: 8%; top: 50%; transform: translateY(-50%);
+  max-width: 420px;
+  z-index: 2;
+}
+.plumlight-root .hero-content .title{
+  font-family: var(--plum-f-serif);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+  text-shadow: 0 2px 8px rgba(255,255,255,.3);
+  white-space: pre-line;
+  margin-bottom: 36px;
+  opacity: 0; transform: translateY(20px);
+  animation: plumlight-heroIn .9s .2s forwards cubic-bezier(.2,.7,.1,1);
+}
+.plumlight-root .hero-content .btn{
+  opacity: 0; transform: translateY(20px);
+  animation: plumlight-heroIn .9s .5s forwards cubic-bezier(.2,.7,.1,1);
+}
+@keyframes plumlight-heroIn{ to{ opacity: 1; transform: translateY(0);} }
+
+.plumlight-root .hero-dots{
+  position: absolute;
+  bottom: 32px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 10px;
+  z-index: 2;
+}
+.plumlight-root .hero-dots button{
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,.5);
+  transition: all .3s ease;
+}
+.plumlight-root .hero-dots button.active{ background: var(--plum-red); width: 28px; border-radius: 5px; }
+.plumlight-root .hero-dots button:hover{ background: rgba(255,255,255,.85); }
+
+.plumlight-root .hero-arrow{
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .3s ease;
+  z-index: 2;
+}
+.plumlight-root .hero-arrow:hover{ background: rgba(255,255,255,.3); }
+.plumlight-root .hero-arrow.left{ left: 24px; }
+.plumlight-root .hero-arrow.right{ right: 24px; }
+
+/* Inner-page banner (Story/Contact) */
+.plumlight-root .inner-banner{
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  background: #000;
+}
+.plumlight-root .inner-banner .bg{
+  position: absolute; inset: -50px;
+  background-size: cover; background-position: center;
+  filter: grayscale(.1);
+}
+.plumlight-root .inner-banner::after{
+  content:"";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,8,.65) 0%, rgba(8,8,8,.15) 100%);
+}
+.plumlight-root .inner-banner h1{
+  position: absolute; left: 50%; top: 55%; transform: translate(-50%,-50%);
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 36px; letter-spacing: 0.12em;
+  color: #fff;
+  z-index: 2;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+
+/* =========================================================
+   ABOUT (Home)
+   ========================================================= */
+.plumlight-root .about{
+  position: relative;
+  padding: 120px 40px 100px;
+  overflow: hidden;
+}
+.plumlight-root .about-inner{
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.plumlight-root .about-left{
+  position: relative;
+  aspect-ratio: 1.1/1;
+}
+.plumlight-root .about-img{
+  position: absolute; inset: 0;
+  border-radius: 200px;
+  overflow: hidden;
+  background-size: cover; background-position: center;
+  box-shadow: var(--plum-shadow-soft);
+}
+.plumlight-root .about-stamp{
+  position: absolute;
+  top: -20px; right: 20px;
+  width: 80px; height: 80px;
+  background: var(--plum-red); color: var(--plum-cream);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  transform: rotate(-6deg);
+  box-shadow: 0 8px 24px rgba(179,41,44,0.35);
+  z-index: 2;
+  transition: transform .5s ease;
+}
+.plumlight-root .about-stamp:hover{ transform: rotate(0deg) scale(1.05); }
+
+.plumlight-root .about-right h3{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 22px; line-height: 1.9;
+  color: var(--plum-gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  white-space: pre-line;
+}
+.plumlight-root .about-right p{
+  font-family: var(--plum-f-sans);
+  font-size: 16px; line-height: 2.1;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+  margin-bottom: 40px;
+}
+
+/* =========================================================
+   CATEGORIES (circle cards)
+   ========================================================= */
+.plumlight-root .categories{
+  padding: 100px 40px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.plumlight-root .cat-grid{
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.plumlight-root .cat-card{ text-align: center; cursor: pointer; }
+.plumlight-root .cat-circle{
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(162,110,51,.25);
+  background-color: #d8cbb4;
+  background-size: cover; background-position: center;
+  box-shadow: var(--plum-shadow-card);
+  transition: transform .5s cubic-bezier(.2,.7,.1,1), box-shadow .5s ease;
+  position: relative;
+}
+.plumlight-root .cat-card:hover .cat-circle{
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(33,24,21,.15);
+}
+.plumlight-root .cat-circle::after{
+  content:"";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg, transparent 55%, rgba(33,24,21,.15) 100%);
+}
+.plumlight-root .cat-card .label{
+  margin-top: 22px;
+  font-family: var(--plum-f-sans);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+}
+
+/* =========================================================
+   PRODUCT GRID (Best Sellers / Monthly Picks)
+   ========================================================= */
+.plumlight-root .products{ padding: 100px 40px; position: relative; overflow: hidden; }
+.plumlight-root .prod-grid{
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.plumlight-root .prod{
+  display: flex; flex-direction: column; gap: 12px;
+  cursor: pointer;
+  position: relative;
+}
+.plumlight-root .prod-img{
+  aspect-ratio: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #e8e0d0;
+  background-size: cover; background-position: center;
+  position: relative;
+  transition: transform .5s cubic-bezier(.2,.7,.1,1);
+}
+.plumlight-root .prod:hover .prod-img{ transform: translateY(-4px); }
+.plumlight-root .prod-img::after{
+  content:"";
+  position: absolute; inset: 0;
+  background: rgba(33,24,21,0);
+  transition: background .3s ease;
+}
+.plumlight-root .prod:hover .prod-img::after{ background: rgba(33,24,21,.2); }
+
+.plumlight-root .prod .add-btn{
+  position: absolute;
+  left: 50%; bottom: 90px; transform: translate(-50%, 20px);
+  opacity: 0;
+  background: #fff; color: var(--plum-gold-3);
+  padding: 10px 22px; border-radius: 999px;
+  font-family: var(--plum-f-sans); font-size: 14px;
+  letter-spacing: 0.05em;
+  box-shadow: var(--plum-shadow-card);
+  transition: all .4s cubic-bezier(.2,.7,.1,1);
+  z-index: 2;
+  white-space: nowrap;
+}
+.plumlight-root .prod:hover .add-btn{ opacity: 1; transform: translate(-50%, 0); }
+.plumlight-root .prod .add-btn:hover{ background: var(--plum-gold-3); color: #fff; }
+
+.plumlight-root .prod .name{
+  font-family: var(--plum-f-sans); font-size: 18px;
+  letter-spacing: 0.08em; color: var(--plum-ink);
+  padding-top: 4px;
+}
+.plumlight-root .prod .price{
+  font-family: var(--plum-f-sans); font-size: 18px;
+  letter-spacing: 0.08em; color: var(--plum-ink);
+}
+
+/* Heart / favourite */
+.plumlight-root .prod .heart{
+  position: absolute; top: 14px; right: 14px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--plum-muted);
+  opacity: 0; transform: translateY(-6px);
+  transition: all .3s ease;
+  z-index: 2;
+}
+.plumlight-root .prod:hover .heart{ opacity: 1; transform: translateY(0); }
+.plumlight-root .prod .heart:hover{ background: #fff; color: var(--plum-red); }
+.plumlight-root .prod .heart.on{ color: var(--plum-red); opacity: 1; transform: translateY(0); }
+
+/* =========================================================
+   GIFT BOX (big curved red banner)
+   ========================================================= */
+.plumlight-root .gift{
+  position: relative;
+  max-width: 1200px;
+  margin: 60px auto 100px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 555px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--plum-shadow-soft);
+}
+.plumlight-root .gift-img{
+  background-size: cover; background-position: center;
+  border-radius: 0 278px 278px 0;
+  background-color: #e7d8c1;
+}
+.plumlight-root .gift-text{
+  background: var(--plum-red);
+  color: #fff;
+  padding: 80px 60px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  position: relative;
+}
+.plumlight-root .gift-text .ornament{ color: var(--plum-gold-3); width: 26px; height: 22px; margin-bottom: 16px; }
+.plumlight-root .gift-text h3{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 26px; letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.plumlight-root .gift-text .divider{
+  width: 60px; height: 1px; background: rgba(255,255,255,.6);
+  margin-bottom: 28px;
+}
+.plumlight-root .gift-text p{
+  font-family: var(--plum-f-sans);
+  font-size: 16px; line-height: 2.4; letter-spacing: 0.08em;
+  margin-bottom: 32px;
+}
+
+/* =========================================================
+   STORY PAGE specific
+   ========================================================= */
+.plumlight-root .story-section{
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.plumlight-root .story-inner{
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  position: relative;
+}
+.plumlight-root .story-inner.reverse{ grid-template-columns: 1fr 1fr; }
+.plumlight-root .story-text h3{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 22px; line-height: 1.9;
+  color: var(--plum-gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+.plumlight-root .story-text p{
+  font-family: var(--plum-f-sans);
+  font-size: 16px; line-height: 2.5;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+  white-space: pre-line;
+}
+
+/* Flower-shaped image mask (from page 2) */
+.plumlight-root .flower-mask{
+  width: 100%; aspect-ratio: 1;
+  background-size: cover; background-position: center;
+  /* SVG mask generated below via CSS clip-path */
+  clip-path: path("M250 30 C320 0 380 50 380 120 C440 90 490 140 480 210 C500 280 460 330 390 330 C400 400 340 450 270 430 C260 500 180 500 150 440 C80 460 30 410 40 340 C-20 310 0 230 60 210 C20 140 80 80 150 100 C170 30 220 10 250 30 Z");
+  -webkit-clip-path: path("M250 30 C320 0 380 50 380 120 C440 90 490 140 480 210 C500 280 460 330 390 330 C400 400 340 450 270 430 C260 500 180 500 150 440 C80 460 30 410 40 340 C-20 310 0 230 60 210 C20 140 80 80 150 100 C170 30 220 10 250 30 Z");
+}
+
+.plumlight-root .oval-framed{
+  position: relative;
+  aspect-ratio: 3/4;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.plumlight-root .oval-framed .outer{
+  position: absolute; inset: 0;
+  border: 2px solid var(--plum-gold-3);
+  border-radius: 50%;
+}
+.plumlight-root .oval-framed .inner-frame{
+  position: absolute; inset: 8px 12px;
+  border: 2px solid var(--plum-gold-3);
+  border-radius: 50%;
+}
+.plumlight-root .oval-framed .photo{
+  position: absolute; inset: 22px 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #d9d9d9;
+  background-size: cover; background-position: center;
+}
+.plumlight-root .oval-framed .plum-tag{
+  position: absolute; top: -12px; left: -4px;
+  width: 90px; height: 78px;
+  z-index: 2;
+}
+
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+.plumlight-root .contact-body{
+  padding: 80px 40px 40px;
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  position: relative;
+}
+.plumlight-root .contact-col h3{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 22px; letter-spacing: 0.08em;
+  color: var(--plum-gold);
+  margin-bottom: 28px;
+}
+.plumlight-root .contact-info{
+  display: flex; flex-direction: column; gap: 18px;
+  font-family: var(--plum-f-english);
+  font-size: 16px;
+}
+.plumlight-root .contact-info .line{
+  display: flex; align-items: center; gap: 14px;
+  color: var(--plum-ink);
+}
+.plumlight-root .contact-info .line svg{ width: 22px; height: 22px; color: var(--plum-red); flex-shrink: 0; }
+.plumlight-root .contact-socials{
+  display: flex; gap: 14px; margin-top: 24px;
+}
+.plumlight-root .contact-socials a{
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--plum-red);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  transition: transform .3s ease, background .3s ease;
+}
+.plumlight-root .contact-socials a:hover{ transform: translateY(-3px); background: var(--plum-ink); }
+.plumlight-root .contact-socials svg{ width: 18px; height: 18px; }
+
+.plumlight-root .map-frame{
+  width: 100%; aspect-ratio: 4/3;
+  border-radius: 32px; overflow: hidden;
+  background: #e7d8c1;
+  background-size: cover; background-position: center;
+  box-shadow: var(--plum-shadow-soft);
+  position: relative;
+}
+.plumlight-root .map-frame::after{
+  content:""; position:absolute; inset:0;
+  box-shadow: inset 0 0 0 1px rgba(33,24,21,.08);
+  border-radius: 32px;
+}
+
+/* =========================================================
+   FOOTER + CONTACT FORM
+   ========================================================= */
+.plumlight-root .footer{
+  position: relative;
+  background: var(--plum-cream-2);
+  padding: 60px 40px 40px;
+  margin-top: 60px;
+}
+.plumlight-root .footer::before{
+  /* Scallop top edge */
+  content:"";
+  position: absolute;
+  top: -40px; left: 0; right: 0;
+  height: 40px;
+  background-image: radial-gradient(circle at 30px 40px, var(--plum-cream-2) 30px, transparent 30px);
+  background-size: 60px 40px;
+  background-repeat: repeat-x;
+}
+.plumlight-root .footer-inner{
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+.plumlight-root .footer-left h3{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 18px; letter-spacing: 0.08em;
+  color: var(--plum-ink); margin-bottom: 8px;
+  margin-top: 14px;
+}
+.plumlight-root .footer-left .en{
+  font-family: var(--plum-f-english);
+  font-size: 36px; line-height: 1.25;
+  color: var(--plum-ink);
+  margin-bottom: 24px;
+}
+.plumlight-root .footer-left p{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 16px; line-height: 2;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+  white-space: pre-line;
+  margin-bottom: 28px;
+}
+.plumlight-root .footer-socials{ display:flex; gap: 13px; }
+.plumlight-root .footer-socials a{
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--plum-ink);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  transition: transform .25s ease, background .25s ease;
+}
+.plumlight-root .footer-socials a:hover{ transform: translateY(-3px); background: var(--plum-gold); }
+.plumlight-root .footer-socials svg{ width: 18px; height: 18px; }
+
+.plumlight-root .form{
+  display: grid; gap: 20px;
+}
+.plumlight-root .form .row-2{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.plumlight-root .form .field{
+  background: transparent;
+  border: 1px solid var(--plum-line);
+  border-radius: 10px;
+  font-family: var(--plum-f-sans);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--plum-ink);
+  padding: 18px 22px;
+  width: 100%;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.plumlight-root .form .field::placeholder{ color: var(--plum-ink); opacity: .8; }
+.plumlight-root .form .field:focus{
+  outline: none;
+  border-color: var(--plum-gold);
+  box-shadow: 0 0 0 3px rgba(162,110,51,.12);
+}
+.plumlight-root .form textarea.field{ min-height: 142px; resize: vertical; }
+.plumlight-root .form .submit-wrap{ display:flex; justify-content: center; margin-top: 4px; }
+
+.plumlight-root .form-success{
+  background: #fff;
+  border: 1px solid var(--plum-gold);
+  color: var(--plum-gold);
+  border-radius: 14px;
+  padding: 24px;
+  font-family: var(--plum-f-serif); font-weight: 700;
+  text-align: center;
+  animation: plumlight-popIn .5s cubic-bezier(.2,1.3,.4,1);
+}
+@keyframes plumlight-popIn{ from{ opacity: 0; transform: scale(.9);} to{ opacity: 1; transform: scale(1);} }
+
+/* Sub-footer line */
+.plumlight-root .subfoot{
+  max-width: 1200px; margin: 40px auto 0;
+  padding-top: 30px;
+  border-top: 1px solid rgba(33,24,21,.12);
+  display: flex; flex-wrap: wrap;
+  justify-content: space-between; gap: 20px;
+  font-family: var(--plum-f-sans);
+  font-size: 13px;
+  color: var(--plum-muted);
+}
+.plumlight-root .subfoot .logo-mini{ display:flex; flex-direction:column; gap: 2px; font-family: var(--plum-f-serif); font-weight: 700; font-size: 18px; letter-spacing: 0.2em; color: var(--plum-ink); }
+.plumlight-root .subfoot .logo-mini small{ font-family: var(--plum-f-english); font-size: 10px; letter-spacing: 0.28em; color: var(--plum-gold); font-weight: 400; }
+.plumlight-root .subfoot .cols{ display:flex; gap: 40px; }
+.plumlight-root .subfoot a:hover{ color: var(--plum-gold); }
+
+/* =========================================================
+   CART DRAWER
+   ========================================================= */
+.plumlight-root .cart-overlay{
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(33,24,21,.4);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.plumlight-root .cart-overlay.open{ opacity: 1; pointer-events: auto; }
+.plumlight-root .cart-drawer{
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 420px; max-width: 100vw;
+  background: var(--plum-paper);
+  z-index: 91;
+  transform: translateX(100%);
+  transition: transform .45s cubic-bezier(.7,0,.2,1);
+  display: flex; flex-direction: column;
+  box-shadow: -10px 0 40px rgba(33,24,21,.15);
+}
+.plumlight-root .cart-drawer.open{ transform: translateX(0); }
+.plumlight-root .cart-header{
+  padding: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(33,24,21,.1);
+}
+.plumlight-root .cart-header h3{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 22px; letter-spacing: 0.12em;
+  color: var(--plum-ink);
+}
+.plumlight-root .cart-close{
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--plum-ink);
+  transition: background .2s ease;
+}
+.plumlight-root .cart-close:hover{ background: rgba(33,24,21,.08); }
+
+.plumlight-root .cart-items{
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.plumlight-root .cart-empty{
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100%;
+  color: var(--plum-muted);
+  font-family: var(--plum-f-serif);
+  gap: 12px;
+}
+.plumlight-root .cart-empty svg{ width: 48px; height: 48px; opacity: .4; }
+.plumlight-root .cart-item{
+  display: grid; grid-template-columns: 72px 1fr auto;
+  gap: 14px; align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(33,24,21,.08);
+  animation: plumlight-slideIn .35s cubic-bezier(.2,.7,.1,1);
+}
+@keyframes plumlight-slideIn{ from{ opacity: 0; transform: translateX(20px);} to{ opacity: 1; transform: translateX(0);} }
+.plumlight-root .cart-item img{
+  width: 72px; height: 72px; border-radius: 10px; object-fit: cover;
+}
+.plumlight-root .cart-item .info{ display: flex; flex-direction: column; gap: 4px; }
+.plumlight-root .cart-item .info .nm{ font-family: var(--plum-f-sans); font-size: 15px; color: var(--plum-ink); }
+.plumlight-root .cart-item .info .pr{ font-family: var(--plum-f-sans); font-size: 14px; color: var(--plum-gold); }
+.plumlight-root .cart-item .qty{
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--plum-f-sans);
+}
+.plumlight-root .cart-item .qty button{
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(162,110,51,.12);
+  color: var(--plum-gold);
+  font-size: 14px;
+  transition: background .2s ease;
+}
+.plumlight-root .cart-item .qty button:hover{ background: var(--plum-gold); color: #fff; }
+
+.plumlight-root .cart-foot{
+  padding: 20px 24px;
+  border-top: 1px solid rgba(33,24,21,.1);
+  background: #fff;
+}
+.plumlight-root .cart-total{
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 14px;
+  font-family: var(--plum-f-serif);
+}
+.plumlight-root .cart-total .lbl{ font-size: 14px; letter-spacing: 0.12em; color: var(--plum-muted); }
+.plumlight-root .cart-total .amt{ font-size: 24px; font-weight: 700; color: var(--plum-gold); }
+
+/* =========================================================
+   MODAL (Member login)
+   ========================================================= */
+.plumlight-root .modal-overlay{
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(33,24,21,.5);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.plumlight-root .modal-overlay.open{ opacity: 1; pointer-events: auto; }
+.plumlight-root .modal{
+  background: var(--plum-paper);
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 420px; width: calc(100% - 40px);
+  position: relative;
+  transform: translateY(20px) scale(.98);
+  opacity: 0;
+  transition: all .35s cubic-bezier(.2,.7,.1,1);
+}
+.plumlight-root .modal-overlay.open .modal{ transform: translateY(0) scale(1); opacity: 1; }
+.plumlight-root .modal h2{
+  font-family: var(--plum-f-english);
+  font-size: 32px; text-align: center;
+  color: var(--plum-ink); margin-bottom: 6px;
+}
+.plumlight-root .modal .sub{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  text-align: center;
+  font-size: 16px; letter-spacing: 0.12em;
+  color: var(--plum-gold);
+  margin-bottom: 30px;
+}
+.plumlight-root .modal .form{ gap: 16px; }
+.plumlight-root .modal-close{
+  position: absolute; top: 14px; right: 14px;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--plum-ink);
+  transition: background .2s ease;
+}
+.plumlight-root .modal-close:hover{ background: rgba(33,24,21,.08); }
+.plumlight-root .modal .bottom-links{
+  display: flex; justify-content: space-between;
+  font-family: var(--plum-f-sans); font-size: 13px;
+  margin-top: 20px;
+  color: var(--plum-muted);
+}
+.plumlight-root .modal .bottom-links a:hover{ color: var(--plum-gold); }
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+.plumlight-root .mobile-menu{
+  position: fixed; inset: 0; z-index: 88;
+  background: var(--plum-paper);
+  transform: translateY(-100%);
+  transition: transform .5s cubic-bezier(.7,0,.2,1);
+  display: flex; flex-direction: column;
+  padding: 100px 40px 40px;
+}
+.plumlight-root .mobile-menu.open{ transform: translateY(0); }
+.plumlight-root .mobile-menu a{
+  font-family: var(--plum-f-serif); font-weight: 700;
+  font-size: 32px;
+  padding: 18px 0;
+  letter-spacing: 0.12em;
+  color: var(--plum-ink);
+  border-bottom: 1px solid rgba(33,24,21,.1);
+  transition: padding-left .3s ease, color .3s ease;
+}
+.plumlight-root .mobile-menu a:hover, .plumlight-root .mobile-menu a.active{
+  padding-left: 12px; color: var(--plum-gold);
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+.plumlight-root .toast{
+  position: fixed;
+  bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--plum-ink);
+  color: var(--plum-paper);
+  padding: 14px 28px; border-radius: 999px;
+  font-family: var(--plum-f-sans); font-size: 14px;
+  letter-spacing: 0.08em;
+  z-index: 120;
+  opacity: 0; pointer-events: none;
+  transition: all .35s cubic-bezier(.2,.7,.1,1);
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+.plumlight-root .toast.show{ opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* =========================================================
+   PAGE ENTER ANIMATIONS
+   ========================================================= */
+.plumlight-root .page{ animation: plumlight-pageIn .6s cubic-bezier(.2,.7,.1,1); }
+@keyframes plumlight-pageIn{ from{ transform: translateY(8px);} to{ transform: translateY(0);} }
+
+.plumlight-root .reveal{
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .8s cubic-bezier(.2,.7,.1,1), transform .8s cubic-bezier(.2,.7,.1,1);
+}
+.plumlight-root .reveal.pending{ opacity: 0; transform: translateY(24px); }
+.plumlight-root .reveal.on{ opacity: 1; transform: translateY(0); }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 960px){
+  .plumlight-root .nav{ padding: 14px 20px; }
+  .plumlight-root .nav .links{ display: none; }
+  .plumlight-root .nav .member{ display: none; }
+  .plumlight-root .hamburger{ display: flex; }
+
+  .plumlight-root .hero{ height: 560px; }
+  .plumlight-root .hero-content{ left: 24px; max-width: calc(100% - 48px); }
+  .plumlight-root .hero-content .title{ font-size: 30px; }
+
+  .plumlight-root .about-inner, .plumlight-root .story-inner, .plumlight-root .contact-body{
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .plumlight-root .cat-grid{ grid-template-columns: repeat(2, 1fr); }
+  .plumlight-root .prod-grid{ grid-template-columns: repeat(2, 1fr); }
+  .plumlight-root .gift{ grid-template-columns: 1fr; }
+  .plumlight-root .gift-img{ border-radius: 0; aspect-ratio: 4/3; }
+  .plumlight-root .gift-text{ padding: 50px 30px; }
+
+  .plumlight-root .footer-inner{ grid-template-columns: 1fr; gap: 40px; }
+  .plumlight-root .form .row-2{ grid-template-columns: 1fr; }
+  .plumlight-root .subfoot{ flex-direction: column; }
+  .plumlight-root .subfoot .cols{ flex-direction: column; gap: 8px; }
+}

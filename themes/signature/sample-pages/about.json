@@ -1,0 +1,8 @@
+{
+  "slug": "about",
+  "title": "關於我們（科技風格）",
+  "blocks": [
+    { "id": "sig-about-hero", "type": "hero" },
+    { "id": "sig-about-why",  "type": "why" }
+  ]
+}

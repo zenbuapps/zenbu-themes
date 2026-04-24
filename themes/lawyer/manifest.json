@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "lawyer",
+  "name": "靜奢律師 Lawyer",
+  "description": "靜奢（quiet luxury）風格：暖灰奶色 + Cormorant Garamond 襯線 + 留白優先。適合高級法律、顧問、財富管理、私人醫療等「低調但貴」的專業服務品牌。",
+  "author": { "name": "Zenbu" },
+  "license": "MIT",
+  "compatibility": { "zenbuSite": ">=0.5.0" },
+  "coverImage": "./cover.png",
+  "tags": ["quiet-luxury", "serif", "light", "professional-services", "chinese"],
+  "rootClassName": "lawyer-root",
+  "cssVars": [
+    { "key": "--lw-bg", "label": "主背景", "type": "color-hex", "default": "#F4F1EB", "affects": ["內容區底色"] },
+    { "key": "--lw-bg-outer", "label": "最外層背景", "type": "color-hex", "default": "#E8E4DC", "affects": ["視窗超大時的外圍色"] },
+    { "key": "--lw-bg-soft", "label": "柔底（cards）", "type": "color-hex", "default": "#EDEAE2", "affects": ["卡片底"] },
+    { "key": "--lw-ink", "label": "主文字", "type": "color-hex", "default": "#1A1814", "affects": ["本文、標題"] },
+    { "key": "--lw-ink-dim", "label": "次要文字", "type": "color-hex", "default": "#6B6357", "affects": ["副標"] },
+    { "key": "--lw-ink-mute", "label": "最淡文字", "type": "color-hex", "default": "#9A9080", "affects": ["meta、註解"] },
+    { "key": "--lw-italic", "label": "斜體色", "type": "color-hex", "default": "#7A6E5F", "affects": ["引文斜體"] },
+    { "key": "--lw-line", "label": "細線", "type": "color-hex", "default": "#CEC9BE", "affects": ["分隔線"] },
+    { "key": "--lw-font-display", "label": "標題字體", "type": "string", "default": "\"Cormorant Garamond\", \"Noto Serif TC\", serif", "affects": ["主標題"] }
+  ],
+  "semantics": {
+    "accent": "--lw-ink",
+    "background": "--lw-bg",
+    "foreground": "--lw-ink"
+  },
+  "blockTypesUsed": ["hero", "practice", "cases", "portrait", "appointment"],
+  "samplePages": [
+    { "slug": "home", "path": "./sample-pages/home.json" }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "plumlight",
+  "name": "梅妙蒔光 Plumlight",
+  "description": "蜜餞品牌購物主題：暖金褐 + 米白 + 襯線中文字。含輪播首屏、分類入口、商品區塊、品牌故事與禮盒 CTA。適合台灣食品／伴手禮店家。",
+  "author": { "name": "Zenbu" },
+  "license": "MIT",
+  "compatibility": { "zenbuSite": ">=0.5.0" },
+  "coverImage": "./cover.png",
+  "tags": ["commerce", "food", "chinese", "light", "brand-story"],
+  "rootClassName": "plumlight-root",
+  "cssVars": [
+    { "key": "--plum-gold", "label": "主品牌金棕", "type": "color-hex", "default": "#a26e33", "affects": ["主要連結、hover 色、主標題強調"] },
+    { "key": "--plum-gold-2", "label": "淺金（點綴）", "type": "color-hex", "default": "#d5a361", "affects": ["裝飾點綴"] },
+    { "key": "--plum-gold-3", "label": "按鈕底色", "type": "color-hex", "default": "#b18950", "affects": ["主按鈕"] },
+    { "key": "--plum-red", "label": "紅色強調", "type": "color-hex", "default": "#b3292c", "affects": ["標籤、重點提示"] },
+    { "key": "--plum-cream", "label": "米白裝飾色", "type": "color-hex", "default": "#f2eadd", "affects": ["背景花紋"] },
+    { "key": "--plum-cream-2", "label": "頁尾底色", "type": "color-hex", "default": "#e7d8c1", "affects": ["footer 底"] },
+    { "key": "--plum-paper", "label": "整頁背景紙色", "type": "color-hex", "default": "#fbf7f0", "affects": ["整頁底色"] },
+    { "key": "--plum-ink", "label": "內文主色", "type": "color-hex", "default": "#211815", "affects": ["本文"] },
+    { "key": "--plum-muted", "label": "次要文字", "type": "color-hex", "default": "#726a67", "affects": ["敘述、meta"] },
+    { "key": "--plum-f-serif", "label": "襯線標題字", "type": "string", "default": "\"Noto Serif TC\", \"PT Serif\", Georgia, serif", "affects": ["主標題"] }
+  ],
+  "semantics": {
+    "accent": "--plum-gold",
+    "primary": "--plum-gold",
+    "background": "--plum-paper",
+    "foreground": "--plum-ink"
+  },
+  "blockTypesUsed": ["hero-carousel", "about-summary", "categories-circles", "product-showcase", "brand-story", "gift-cta", "contact-info", "contact-form"],
+  "samplePages": [
+    { "slug": "home", "path": "./sample-pages/home.json" }
+  ]
+}
