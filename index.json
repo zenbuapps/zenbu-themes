@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-04-24T05:56:26.466Z",
+  "themes": [
+    {
+      "id": "lawyer",
+      "name": "靜奢律師 Lawyer",
+      "description": "靜奢（quiet luxury）風格：暖灰奶色 + Cormorant Garamond 襯線 + 留白優先。適合高級法律、顧問、財富管理、私人醫療等「低調但貴」的專業服務品牌。",
+      "author": {
+        "name": "Zenbu"
+      },
+      "license": "MIT",
+      "tags": [
+        "quiet-luxury",
+        "serif",
+        "light",
+        "professional-services",
+        "chinese"
+      ],
+      "coverImage": "https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/themes/lawyer/cover.png",
+      "manifestUrl": "https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/themes/lawyer/manifest.json",
+      "tarballUrl": "https://api.github.com/repos/zenbuapps/zenbu-themes/tarball/main"
+    },
+    {
+      "id": "plumlight",
+      "name": "梅妙蒔光 Plumlight",
+      "description": "蜜餞品牌購物主題：暖金褐 + 米白 + 襯線中文字。含輪播首屏、分類入口、商品區塊、品牌故事與禮盒 CTA。適合台灣食品／伴手禮店家。",
+      "author": {
+        "name": "Zenbu"
+      },
+      "license": "MIT",
+      "tags": [
+        "commerce",
+        "food",
+        "chinese",
+        "light",
+        "brand-story"
+      ],
+      "coverImage": "https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/themes/plumlight/cover.png",
+      "manifestUrl": "https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/themes/plumlight/manifest.json",
+      "tarballUrl": "https://api.github.com/repos/zenbuapps/zenbu-themes/tarball/main"
+    },
+    {
+      "id": "signature",
+      "name": "科技風格 Signature",
+      "description": "深色主調 + 橘紅 accent + Space Grotesk 字體。帶粒子網絡 hero、磁吸按鈕、滾動進場、計數器、客戶 logo 橫向捲動。適合 SaaS / 科技品牌。",
+      "author": {
+        "name": "Zenbu"
+      },
+      "license": "MIT",
+      "tags": [
+        "saas",
+        "tech",
+        "dark",
+        "chinese"
+      ],
+      "coverImage": "https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/themes/signature/cover.png",
+      "manifestUrl": "https://raw.githubusercontent.com/zenbuapps/zenbu-themes/main/themes/signature/manifest.json",
+      "tarballUrl": "https://api.github.com/repos/zenbuapps/zenbu-themes/tarball/main"
+    }
+  ]
+}
