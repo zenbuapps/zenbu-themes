@@ -40,7 +40,7 @@ zenbu-themes/
 │       ├── manifest.json
 │       ├── index.tsx       — ThemeModule entry
 │       ├── theme.css       — scoped under .{theme-id}-root
-│       ├── cover.png       — 1600x900, < 500KB
+│       ├── cover.png       — 1600x900, < 1MB
 │       ├── preview.png     — (optional) full-page screenshot
 │       └── sample-pages/
 │           └── home.json

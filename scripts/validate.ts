@@ -62,7 +62,7 @@ async function validateTheme(themeId: string): Promise<Problem[]> {
   const coverPath = join(dir, 'cover.png');
   if (existsSync(coverPath)) {
     const size = statSync(coverPath).size;
-    if (size > 500_000) push(`cover.png exceeds 500KB (${size} bytes)`);
+    if (size > 1_000_000) push(`cover.png exceeds 1MB (${size} bytes)`);
   } else {
     push('cover.png missing (1600x900 PNG required)');
   }

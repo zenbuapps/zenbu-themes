@@ -25,7 +25,7 @@ Every `themes/{id}/` must contain:
   - `samplePages` — at minimum a home page seed
 - `index.tsx` — exports the `ThemeModule` (Chrome + SectionRenderer + samplePages + supportedBlockTypes).
 - `theme.css` — every selector scoped under `.{rootClassName}`. No leaks to global scope.
-- `cover.png` — 1600x900, under 500KB.
+- `cover.png` — 1600x900, under 1MB.
 - `sample-pages/home.json` — a working page seed for users to start from.
 - Optional: `preview.png` (full-page screenshot, 1200×2400 ish), block-component splits (e.g. `Hero.tsx` for client-only blocks).
 
@@ -35,7 +35,7 @@ Every PR must pass:
 1. `manifest.json` matches `schema/manifest.schema.json`.
 2. `index.tsx` type-checks against `@zenbu-site/theme-types` (a small type-only package).
 3. Every CSS selector is under `.{rootClassName}` (PostCSS rule).
-4. `cover.png` is 1600x900 and under 500KB.
+4. `cover.png` is 1600x900 and under 1MB.
 5. Playwright renders `sample-pages/home.json` in an isolated harness and attaches the screenshot to the PR comment for human review.
 
 ## Human review focus
